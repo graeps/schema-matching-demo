@@ -24,20 +24,18 @@ This version only contains the demonstrator interface and example data used for 
 
 ---
 
-## Architecture
+## Architecture & Infrastructure
 
 The system follows a client–server architecture.
 
 - Frontend framework: **Vue.js with Quasar**
 - Backend Framework: **Flask**
-
-### Infrastructure
-
 - **Docker / Docker Compose** for containerized execution
 - Separate configurations for **production** and **development**
 
 Many of the interactive visualizations rely on the great
 [VueFlow](https://github.com/bcakmakoglu/vue-flow) library.
+
 ---
 
 ## Repository Structure
