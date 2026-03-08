@@ -37,6 +37,8 @@ The system follows a client–server architecture.
 - **Docker / Docker Compose** for containerized execution
 - Separate configurations for **production** and **development**
 
+Many of the interactive visualizations rely on the great
+[VueFlow](https://github.com/bcakmakoglu/vue-flow) library.
 ---
 
 ## Repository Structure
