@@ -19,10 +19,9 @@ The frontend includes several interactive and explanatory elements, such as:
 - puzzle- and game-like UI components for illustrating matching concepts
 - example data schemas used throughout the demonstrator
 
-## Important notice
-
-The original research prototype for schema matching is not included in this public repository.
+Note: The original research prototype for schema matching is not included in this public repository.
 This version only contains the demonstrator interface and example data used for the interactive tutorial.
+
 ---
 
 ## Architecture
