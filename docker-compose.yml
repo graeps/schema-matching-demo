@@ -1,0 +1,33 @@
+name: schema-matching-demo-prod
+
+networks:
+    smd-net:
+      ipam:
+        driver: default
+
+services:
+  backend:
+    container_name: flask-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile_prod
+    env_file:
+      - .env.backend.prod
+    expose:
+      - "5000"
+    restart: always
+    networks:
+      - smd-net
+
+  frontend:
+    container_name: quasar-webapp
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    ports:
+      - "6060:8080"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - smd-net

@@ -1,0 +1,14 @@
+[tool.ruff]
+exclude = [
+    "data_gen/datagenlib",
+]
+
+[tool.ruff.lint]
+extend-select = [
+    "UP", #pyupgrade
+    "D", #pydocstyle
+]
+ignore = ["D100", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

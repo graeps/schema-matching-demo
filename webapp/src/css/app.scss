@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "Barlow";
+  src: url(fonts/barlow/Barlow-Bold.ttf);
+}
+
+h1, h2, h3, h4, h5, h6, .text-h6, .text-h5,.text-h4,.text-h3,.text-h2,.text-h1,{
+  font-family: "Barlow", sans-serif;
+  font-weight: bold;
+  color: #004B6F;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url(./fonts/opensans/OpenSans-Light.ttf);
+}
+
+.text-body1,.text-body2, .text-subtitle1, .text-subtitle2,.text-overline {
+  font-family: "OpenSans", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.text-caption{
+  font-family: "OpenSans", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.text-barlow{
+  font-family: Barlow, sans-serif;
+}
+
+.main-page {
+  width: 70vw;
+  max-width: 1200px;
+}
+
+.primary-button {
+  background-color: #b3e89b;
+  border: 1px solid #55ad2f;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: "Barlow", sans-serif;
+}
+
+.blue-bg {
+  background-color: rgba(140, 192, 218, 0.45);
+}
+
+.blue-border {
+  border: 1px solid #8cc0da;
+}
+
+.filler-box {
+  height: 12vh;
+}
+
+.table-title {
+  font-family: "Barlow", sans-serif;
+  font-size: 16px !important;
+}
+
+.table-content {
+
+  font-size: 15px !important;
+}
+
+.tooltip {
+  font-size: 10pt;
+  background-color: rgb(241, 177, 253);
+  color: rgb(15 23 42);
+  box-shadow: rgba(29, 29, 29, 0.46) 2px 2px 5px 1px;
+}
+
+.highlight1 {
+  background-color: $highlight1Light !important;
+}
+.highlight2 {
+  background-color: $highlight2Light !important;
+}
+.highlight3 {
+  background-color: $highlight3Light !important;
+}
+.highlight4 {
+  background-color: $highlight4Light !important;
+}
+.stripes {
+  background:
+    linear-gradient(45deg,
+      $highlight3Light 25%,
+      $highlight4Light 25%,
+      $highlight4Light 50%,
+      $highlight3Light 50%,
+      $highlight3Light 75%,
+      $highlight4Light 75%,
+      $highlight4Light 100%);
+}

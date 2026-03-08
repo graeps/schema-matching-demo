@@ -1,0 +1,37 @@
+name: schema-matching-demo-dev
+
+networks:
+  smd-net:
+
+services:
+  backend:
+    container_name: flask-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile_dev
+    env_file:
+      - .env.backend.dev
+    expose:
+      - "5000"
+    ports:
+      - "5000:5000"
+    restart: always
+    networks:
+      - smd-net
+
+  frontend:
+    container_name: quasar-webapp
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+      target: "develop-stage"
+    ports:
+      - "9000:9000"
+    volumes:
+      - "./webapp:/app"
+    command: /bin/sh -c "npm install && quasar dev"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - smd-net

@@ -1,0 +1,25 @@
+FROM mambaorg/micromamba:debian11 AS build
+
+# Install java11
+USER root
+RUN apt update
+RUN apt install default-jre -y
+RUN apt install default-jdk -y
+RUN java -version
+USER 1001
+
+# Copy environment and setup Mamba environment
+WORKDIR /python-docker
+COPY --chown=$MAMBA_USER:$MAMBA_USER env.yaml /tmp/env.yaml
+RUN micromamba install -y -n base -f /tmp/env.yaml && \
+    micromamba clean --all --yes
+
+ARG MAMBA_DOCKERFILE_ACTIVATE=1
+RUN python -c 'import uuid; print(uuid.uuid4())' > /tmp/my_uuid
+
+# Copy the rest of the app
+COPY . .
+
+EXPOSE 5000
+
+ENTRYPOINT ["/usr/local/bin/_entrypoint.sh", "gunicorn", "--bind", "0.0.0.0:5000", "app:app"]

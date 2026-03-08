@@ -1,0 +1,57 @@
+.idea
+.venv
+.env
+
+
+
+.DS_Store
+node_modules
+/dist
+.thumbs.db
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# automatically generated files schema matching library
+.sml_native_libs
+.sml_tmp_files
+
+# Editor directories and files
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Quasar core related directories
+.quasar
+webapp/dist
+webapp/quasar.config.*.temporary.compiled*
+
+
+# Cordova related directories and files
+webapp/src-cordova/node_modules
+webapp/src-cordova/platforms
+webapp/src-cordova/plugins
+webapp/src-cordova/www
+
+# Capacitor related directories and files
+webapp/src-capacitor/www
+webapp/src-capacitor/node_modules
+
+
+# local .env files
+.env.local*
+
+# testing files
+server/testdatagen.py
+server/data_gen/generate_schemas_for_training.old
+/webapp/src/pages/PlayGround.vue

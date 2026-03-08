@@ -1,0 +1,53 @@
+stages:
+  - lint
+  - security
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+ruff_lint:
+  image: python:3.10
+  stage: lint
+  tags:
+    - centos
+  script:
+    - python3 --version
+    - pip install --upgrade pip
+    - pip install ruff
+    - python3 -m ruff check --fix
+  allow_failure: false
+
+bandit_security:
+  image: python:3.10
+  stage: security
+  tags:
+    - centos
+  script:
+    - python3 --version
+    - pip install --upgrade pip
+    - pip install bandit
+    - python3 -m bandit --exclude "./server/data_gen/datagenlib" -r ./server
+  allow_failure: false
+
+docker_compose:
+  image: alpine:latest
+  stage: deploy
+  tags:
+    - kmi-gpu-server
+  only:
+    - main
+  cache: [ ]
+  script:
+    - chmod og= $ID_RSA
+    - apk update && apk add openssh-client
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
+        cd /opt/schema-matching && docker compose --verbose down --rmi 'all' -v || true"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
+        rm -rf /opt/schema-matching/* || true"
+    - scp -i $ID_RSA -o StrictHostKeyChecking=no -r $CI_PROJECT_DIR/* $SERVER_USER@$SERVER_IP:/opt/schema-matching
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /opt/schema-matching && docker compose up -d"
