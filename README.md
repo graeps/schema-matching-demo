@@ -1,6 +1,6 @@
 # Schema Matching Demonstrator
 
-## Overview
+### Overview
 
 This repository contains an educational demonstrator application for a schema matching approach developed
 at [ScaDS.AI Leipzig/Dresden](https://scads.ai/).
@@ -9,7 +9,7 @@ It provides a full-stack web application that offers a short interactive introdu
 to [schema matching](https://en.wikipedia.org/wiki/Schema_matching) and allows users to experiment with automated schema
 matching between heterogeneous data schemas.
 
-## Included Demonstrator Content
+### Included Demonstrator Content
 
 The frontend includes several interactive and explanatory elements, such as:
 
@@ -24,7 +24,7 @@ This version only contains the demonstrator interface and example data used for 
 
 ---
 
-## Architecture & Infrastructure
+### Architecture & Infrastructure
 
 The system follows a client–server architecture.
 
@@ -38,7 +38,7 @@ Many of the interactive visualizations rely on the great
 
 ---
 
-## Repository Structure
+### Repository Structure
 
 ```text
 schema-matching-demo/
@@ -66,14 +66,14 @@ schema-matching-demo/
 
 ---
 
-## Prerequisites
+### Prerequisites
 
-### For Docker-based execution
+#### For Docker-based execution
 
 - Docker
 - Docker Compose
 
-### For manual development setup
+#### For manual development setup
 
 - Python (via Conda)
 - Miniconda
@@ -84,7 +84,7 @@ schema-matching-demo/
 
 ---
 
-# Quick Start (Docker)
+### Quick Start (Docker)
 
 Install:
 
@@ -99,7 +99,7 @@ cd .../schema-matching
 
 ---
 
-## Run production mode
+#### Run production mode
 
 ```bash
 docker compose up
@@ -113,7 +113,7 @@ http://localhost:6060/
 
 ---
 
-## Run development mode
+#### Run development mode
 
 ```bash
 docker compose -f docker-compose.dev.yml up
@@ -151,9 +151,9 @@ docker rm -fv $(docker ps -aq)
 
 ---
 
-# Manual Development Setup
+### Manual Development Setup
 
-## System update
+#### System update
 
 ```bash
 sudo apt update
@@ -161,9 +161,9 @@ sudo apt update
 
 ---
 
-# Backend (Flask)
+### Backend (Flask)
 
-## Create Conda environment
+#### Create Conda environment
 
 Install Miniconda:
 
@@ -178,7 +178,7 @@ conda activate smd-env
 
 ---
 
-## Install Java 11 (required)
+#### Install Java 11 (required)
 
 Check installation:
 
@@ -200,7 +200,7 @@ java -version
 
 ---
 
-## Start Flask server
+#### Start Flask server
 
 ```bash
 flask run --port=5000 --debug
@@ -214,9 +214,9 @@ Backend endpoint:
 
 ---
 
-# Frontend (Vue / Quasar)
+### Frontend (Vue / Quasar)
 
-## Install Node.js 20
+#### Install Node.js 20
 
 ```bash
 cd .../schema-matching/webapp/
@@ -231,7 +231,7 @@ npm -v
 
 ---
 
-## Install dependencies
+#### Install dependencies
 
 Install Quasar CLI:
 
@@ -247,7 +247,7 @@ npm install
 
 ---
 
-## Start development server
+#### Start development server
 
 ```bash
 quasar dev
@@ -261,7 +261,7 @@ Frontend endpoint:
 
 ---
 
-## Configuration
+### Configuration
 
 Container configuration is managed through Docker Compose and the corresponding Dockerfiles.
 
@@ -277,5 +277,5 @@ The container images are defined in the following Dockerfiles:
 
 ---
 
-# License
+## License
 BSD 3-Clause License
