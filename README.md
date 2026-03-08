@@ -1,98 +1,282 @@
-# Demonstrator for Schema Matching approach in project AMPL
+# Schema Matching Demonstrator
 
-## Quick start
+## Overview
 
-Install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
-Move to the project directory
+This repository contains an educational demonstrator application for a schema matching approach developed
+at [ScaDS.AI Leipzig/Dresden](https://scads.ai/) as part of its science communication activities.
 
+It provides a full-stack web application that offers a short interactive introduction
+to [schema matching](https://en.wikipedia.org/wiki/Schema_matching) and allows users to experiment with automated schema
+matching between heterogeneous data schemas.
+
+## Included Demonstrator Content
+
+The frontend includes several interactive and explanatory elements, such as:
+
+- introductory explanations of schema matching
+- visual diagrams illustrating preprocessing and matching workflows
+- interactive demonstrations of preprocessing and matching techniques
+- puzzle- and game-like UI components for illustrating matching concepts
+- example data schemas used throughout the demonstrator
+
+## Important notice
+
+The original research prototype for schema matching is not included in this public repository.
+This version only contains the demonstrator interface and example data used for the interactive tutorial.
+---
+
+## Architecture
+
+The system follows a client–server architecture.
+
+- Frontend framework: **Vue.js with Quasar**
+- Backend Framework: **Flask**
+
+### Infrastructure
+
+- **Docker / Docker Compose** for containerized execution
+- Separate configurations for **production** and **development**
+
+---
+
+## Repository Structure
+
+```text
+schema-matching-demo/
+├── server/                  # Flask backend and demo data generation
+│   ├── app.py               # Backend entry point
+│   ├── data_gen/            # Demo data generation and preprocessing logic
+│   ├── utils/               # Backend utility functions
+│   ├── env.yaml             # Conda environment definition
+│   └── pyproject.toml       # Python project metadata
+│
+├── webapp/                  # Quasar/Vue frontend
+│   ├── src/
+│   │   ├── pages/           # Main application pages
+│   │   ├── components/      # Reusable UI components
+│   │   ├── layouts/         # Application layouts
+│   │   ├── router/          # Frontend routing
+│   │   └── assets/          # Images and visual assets for the demonstrator
+│   └── nginx/               # Nginx configuration for containerized deployment
+│
+├── docker-compose.yml       # Production setup
+├── docker-compose.dev.yml   # Development setup
+├── LICENSE
+└── README.md
 ```
+
+---
+
+## Prerequisites
+
+### For Docker-based execution
+
+- Docker
+- Docker Compose
+
+### For manual development setup
+
+- Python (via Conda)
+- Miniconda
+- Node.js 20
+- npm
+- Java 11
+- Quasar CLI
+
+---
+
+# Quick Start (Docker)
+
+Install:
+
+- https://docs.docker.com/engine/install/
+- https://docs.docker.com/compose/install/
+
+Move to the project directory:
+
+```bash
 cd .../schema-matching
 ```
 
-#### Run production mode
+---
 
-```
+## Run production mode
+
+```bash
 docker compose up
 ```
 
-The application runs on [http://localhost:6060/](http://localhost:80/).
+The application runs on:
 
-#### Run development mode
-
+```bash
+http://localhost:6060/
 ```
+
+---
+
+## Run development mode
+
+```bash
 docker compose -f docker-compose.dev.yml up
 ```
 
-Frontend runs on [http://localhost:9000/](http://localhost:9000/).\
-Backend runs on [http://localhost:5000/](http://localhost:5000/).
+Services:
 
+Frontend
+
+```bash
+http://localhost:9000/
 ```
-# Start in the background
+
+Backend
+
+```bash
+http://localhost:5000/
+```
+
+### Additional commands
+
+```bash
+# Start in background
 docker compose -f docker-compose.dev.yml up -d
+
 # Start with rebuild
 docker compose -f docker-compose.dev.yml up --build
-# Stop running container
-docker compose down
-# remove ALL containers (careful!)
+
+#Stop containers
+docker compose -f docker-compose.dev.yml down
+
+# Remove all containers
 docker rm -fv $(docker ps -aq)
 ```
 
 ---
-___
 
-## Start frontend and backend manually
+# Manual Development Setup
 
-```
+## System update
+
+```bash
 sudo apt update
 ```
 
-#### Start Flask backend server in dev mode
+---
 
-##### Create and activate conda environment
+# Backend (Flask)
 
-Install [Miniconda](https://docs.anaconda.com/miniconda/)
+## Create Conda environment
 
-```
+Install Miniconda:
+
+https://docs.anaconda.com/miniconda/
+
+```bash
 cd .../schema-matching/server
-conda env create -f conda-env.yml
+
+conda env create -f env.yml
 conda activate smd-env
 ```
 
-##### Install Java11 if not installed already
+---
 
-```
+## Install Java 11 (required)
+
+Check installation:
+
+```bash
 java -version
-sudo apt install openjdk-11-jre #if not installed
-java -version #check if installation succesful
 ```
 
-##### Run Flask server
+Install if necessary:
 
+```bash
+sudo apt install openjdk-11-jre
 ```
+
+Verify installation:
+
+```bash
+java -version
+```
+
+---
+
+## Start Flask server
+
+```bash
 flask run --port=5000 --debug
 ```
 
-#### Run Quasar/vue frontend server in dev mode
+Backend endpoint:
 
-##### Install Node.js 20
-
+```bash
+Backend endpoint:
 ```
+
+---
+
+# Frontend (Vue / Quasar)
+
+## Install Node.js 20
+
+```bash
 cd .../schema-matching/webapp/
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh
+ | bash
 nvm install 20
+
 node -v
 npm -v
 ```
 
-##### Install Quasar-CLI and node dependencies
+---
 
+## Install dependencies
+
+Install Quasar CLI:
+
+```bash
+npm install -g @quasar/cli
 ```
-npm install-g @quasar/cli
+
+Install project dependencies:
+
+```bash
 npm install
 ```
 
-##### Run the app in dev mode
+---
 
-```
+## Start development server
+
+```bash
 quasar dev
 ```
+
+Frontend endpoint:
+
+```bash
+Frontend endpoint:
+```
+
+---
+
+## Configuration
+
+Container configuration is managed through Docker Compose and the corresponding Dockerfiles.
+
+- `docker-compose.yml` – production setup
+- `docker-compose.dev.yml` – development setup
+
+The container images are defined in the following Dockerfiles:
+
+- `server/Dockerfile_prod` – backend production image
+- `server/Dockerfile_dev` – backend development image
+- `webapp/Dockerfile` – frontend image
+
+
+---
+
+# License
+BSD 3-Clause License
