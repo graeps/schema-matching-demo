@@ -3,7 +3,7 @@
 ## Overview
 
 This repository contains an educational demonstrator application for a schema matching approach developed
-at [ScaDS.AI Leipzig/Dresden](https://scads.ai/) as part of its science communication activities.
+at [ScaDS.AI Leipzig/Dresden](https://scads.ai/).
 
 It provides a full-stack web application that offers a short interactive introduction
 to [schema matching](https://en.wikipedia.org/wiki/Schema_matching) and allows users to experiment with automated schema
