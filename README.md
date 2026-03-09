@@ -2,12 +2,10 @@
 
 ### Overview
 
-This repository contains an educational demonstrator application for a schema matching approach developed
-at [ScaDS.AI Leipzig/Dresden](https://scads.ai/).
+This repository contains an educational demonstrator application for a schema matching approach.
 
 It provides a full-stack web application that offers a short interactive introduction
-to [schema matching](https://en.wikipedia.org/wiki/Schema_matching) and allows users to experiment with automated schema
-matching between heterogeneous data schemas.
+to [schema matching](https://en.wikipedia.org/wiki/Schema_matching) and allows users to experiment with automated schema matching between heterogeneous data schemas.
 
 ### Included Demonstrator Content
 
